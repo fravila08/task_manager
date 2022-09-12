@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SeeDetails from "../components/Label";
 import EraseDetails from "../components/EraseLabel";
+import CompletedThisTask from "../components/Completed";
 
 function Done({deleteTask}){
     const [show,setShow]=useState(false)

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SeeDetails from "../components/Label";
 import EraseDetails from "../components/EraseLabel";
+import CompletedThisTask from "../components/Completed";
 
 function ToDo({deleteTask}){
     const [mytask, setMytask]=useState([])
@@ -36,6 +37,7 @@ function ToDo({deleteTask}){
                             <div>
                                 <SeeDetails  setShowDeets={setShowDeets} myItemId={item.id} showDeets={showDeets}/>
                                 <EraseDetails myItemId={item.id} deleteTask={deleteTask} />
+                                <CompletedThisTask itemId={item.id}/>
                             </div>
                         </div>
                         {showDeets == item.id ? 

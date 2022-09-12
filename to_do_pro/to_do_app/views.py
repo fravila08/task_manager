@@ -1,5 +1,5 @@
 from datetime import date
-from datetime import datetime
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -14,6 +14,7 @@ def index(request):
 def get_task(request):
     current_task= Task.objects.filter(completed = False, date_for_event=date.today()).values()
     return Response(list(current_task))
+
 
 @api_view(["GET", "POST"])
 def completed_task(request):
@@ -91,4 +92,12 @@ def deleting_task(request, itemId):
     task=Task.objects.get(id = itemId)
     task.delete()
     return Response({"msg":"task deleted"})
+
+@api_view(["PUT"])
+def complete_this_task(request):
+    itemId=request.data["myItemId"]
+    task=Task.objects.get(id = itemId)
+    task.completed = True
+    task.save()
+    return Response(True)
 

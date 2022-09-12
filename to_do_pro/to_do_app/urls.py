@@ -10,4 +10,5 @@ urlpatterns = [
     path("allCompleteTask", views.myCompletedTask, name="allcomp"),
     path("new_task", views.new_task, name="new_task"),
     path("deleteTask/<int:itemId>", views.deleting_task, name="deleteTask"),
+    path("completeThisTask", views.complete_this_task, name='completeThisTask'),
 ]

@@ -28,9 +28,11 @@ function DashBoard(){
         getCompleteTask()
     },[])
 
-    console.log(new Date())
+    const todaysDate=new Date()
 
     return (
+        <div className="flexbox" style={{flexDirection:"column", alignItems:"center"}}>
+            <h3 style={{color:"white", marginBottom:"3vh"}}>Task of the Day</h3>
         <div className="flexbox">
             <Board id="board_1" className="board">
                 <div className="columnTitle">
@@ -58,6 +60,7 @@ function DashBoard(){
                     </ShakeLittle>
                 )):<p></p>}
             </Board>
+        </div>
         </div>
     )
 }
