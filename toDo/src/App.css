@@ -5,7 +5,7 @@
 }
 
 body{
-  background-color: black;
+  background-color: darkgrey;
 }
 
 .flexbox{
@@ -22,7 +22,7 @@ body{
   display: flex;
   flex-direction: column;
   width: 35vw;
-  background-color: darkgrey;
+  background-color: rgba(255, 255, 255, 0.544);
   padding: 15px;
   align-items: center;
   overflow-y: scroll;
@@ -35,11 +35,13 @@ body{
 
 .flexbox .board .card{
   padding: 15px 25px;
-  background-color: #F3F3F3;
+  background-color: white;
   cursor: pointer;
   margin-bottom: 15px;
   text-align: center;
   width: 100%;
+  display:flex;
+  border: solid 3px black;
 }
 
 html{
@@ -52,7 +54,7 @@ html{
 }
 
 .App{
-  background-color:black;
+  background-color:darkgrey;
   min-height: 100%;
   width: 100%;
 }
@@ -68,6 +70,7 @@ html{
   justify-content: space-around;
   padding: 2vh 0;
   margin-bottom: 2vh;
+  border-bottom: 1px rgba(0, 0, 0, 0.201) solid;
 }
 .link{
   background-color: white;
@@ -130,7 +133,7 @@ p{
   overflow: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
-  border: solid 1vw white;
+  border: solid 1vw black;
   border-radius: 5vw;
   padding: 1vh 0;
 }
@@ -177,4 +180,19 @@ p{
 .upRight{
   position: absolute;
   right: 0;
+  margin-right: 2vw;
+  width: 10vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.insideCard{
+  display: flex;
+  justify-content: space-between;
+}
+.detailsContainerDashboard{
+  display: flex;
+  background-color: rgba(255, 255, 0, 0.651);
+  border: 2px solid black;
+  width: 100%;
 }

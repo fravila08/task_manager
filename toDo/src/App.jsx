@@ -72,8 +72,8 @@ function App() {
             <a href="#" onClick={signOut}  style={{textDecoration:"none", color:"white"}} ><strong>Sign Out</strong></a>
           </div> :
           <div className="upRight" >
-            <a href="#/signUp" style={{textDecoration:"none", color:"white"}} ><strong>Sign Up</strong></a>
-            <a href="#/signIn" style={{textDecoration:"none", color:"white"}} ><strong>Sign In</strong></a> 
+            <a href="#/signUp" style={{textDecoration:"none", color:"black"}} ><strong>Sign Up</strong></a>
+            <a href="#/signIn" style={{textDecoration:"none", color:"black"}} ><strong>Sign In</strong></a> 
           </div> }
       <Header />
       <NavBaar setShowModal={setShowModal} user={user}/>
@@ -83,7 +83,7 @@ function App() {
       />
       <Router>
         <Routes>
-          <Route path="/" element={<DashBoard />} />
+          <Route path="/" element={<DashBoard deleteTask={deleteTask}/>} />
           <Route path="/toDo" element={<ToDo deleteTask={deleteTask}  />} />
           <Route path='/done' element={<Done deleteTask={deleteTask} />} />
           <Route path="/signup" element={<SignUp />} />
