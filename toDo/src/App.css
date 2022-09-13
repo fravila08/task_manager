@@ -174,3 +174,7 @@ p{
   background-color: yellow;
 }
 
+.upRight{
+  position: absolute;
+  right: 0;
+}

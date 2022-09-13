@@ -1,9 +1,10 @@
 from datetime import date
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import *
+from django.core import serializers
 
 @api_view(['GET', 'POST'])
 def index(request):
@@ -12,14 +13,14 @@ def index(request):
 
 @api_view(["GET"])
 def get_task(request):
-    current_task= Task.objects.filter(completed = False, date_for_event=date.today()).values()
+    current_task= Task.objects.filter(user= request.user, completed = False, date_for_event=date.today()).values()
     return Response(list(current_task))
 
 
 @api_view(["GET", "POST"])
 def completed_task(request):
     if request.method == "GET":
-        complete_task=Task.objects.filter(completed = True, date_for_event=date.today()).values()
+        complete_task=Task.objects.filter(user= request.user, completed = True, date_for_event=date.today()).values()
         return Response(list(complete_task))
     if request.method == "POST":
         task_id=request.data["taskId"]
@@ -35,14 +36,14 @@ def completed_task(request):
     
 @api_view(["GET"])
 def all_incomplete_task(request):
-    all_task=Task.objects.filter(completed = False).values()
+    all_task=Task.objects.filter(user=request.user, completed = False).values()
     all_task=list(all_task)
     all_task = sorted(all_task, key=lambda d: d['date_for_event']) 
     return Response(list(all_task))
 
 @api_view(["GET"])
 def myCompletedTask(request):
-    my_task=Task.objects.filter(completed = True).values()
+    my_task=Task.objects.filter(user=request.user, completed = True).values()
     my_task=list(my_task)
     my_task = sorted(my_task, key=lambda d: d['date_for_event']) 
     return Response(list(my_task))
@@ -52,7 +53,7 @@ def new_task(request):
     try:
         print(request.data)
         title=request.data["title"]
-        incoming=Task.objects.create(title=title)
+        incoming=Task.objects.create(user=request.user, title=title)
         if "time_for_event" in request.data:
             time_for_event=request.data["time_for_event"]
             incoming.time_for_event= time_for_event
@@ -101,3 +102,40 @@ def complete_this_task(request):
     task.save()
     return Response(True)
 
+@api_view(['POST'])
+def sign_up(request):
+    try:
+        AppUser.objects.create_user(name=request.data['name'], username=request.data['email'], password=request.data['password'], email=request.data['email'])
+    except Exception as e:
+        print(str(e))
+    return HttpResponse('Youve signed up')
+
+@api_view(['POST'])
+def log_in(request):
+    email = request.data['email']
+    password=request.data['password']
+    user = authenticate(username= email, password = password)
+    if user is not None:
+        if user.is_active:
+            try:
+                login(request._request, user)
+            except Exception as e:
+                print(str(e))
+            return HttpResponse('Youre logged in')
+        else: 
+            return HttpResponse('Not Active')
+    else:
+        return HttpResponse('No user recognized')
+    
+@api_view(['POST'])
+def log_out(request):
+    logout(request)
+    return HttpResponse('Logged Out')
+
+@api_view(['GET'])                
+def curr_user(request):
+    if request.user.is_authenticated:
+        data= serializers.serialize("json", [request.user], fields=['name', 'email', 'password'])
+        return HttpResponse(data)
+    else:
+        return JsonResponse({'user':None})

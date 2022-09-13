@@ -15,12 +15,14 @@ function DashBoard(){
          const response = await axios.get("getTask")
          setItems(response.data)
          setFoundData(!foundData)
+         console.log(response.data)
         }
     
     const getCompleteTask=async()=>{
         const response = await axios.get("getComplete")
         setCompleted(response.data)
         setShow(!show)
+        console.log(response.data)
     }
 
     useEffect(()=>{
@@ -28,7 +30,6 @@ function DashBoard(){
         getCompleteTask()
     },[])
 
-    const todaysDate=new Date()
 
     return (
         <div className="flexbox" style={{flexDirection:"column", alignItems:"center"}}>

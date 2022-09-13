@@ -2,7 +2,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NewTaskLabel from './NewTaskLabel';
 
-function NavBaar({setShowModal}){
+function NavBaar({setShowModal, user}){
 
     return(
         <Navbar class="myNav" >
@@ -22,11 +22,12 @@ function NavBaar({setShowModal}){
                         <p>COMPLETED TASKS</p>
                     </div>
                 </Nav.Link>
-                <div 
-                style={{width:"3vw", height:"3vw", position:"absolute", right:"0", marginRight:"1vw"}}
-                > 
-                    <NewTaskLabel setShowModal={setShowModal}/>
-                </div>
+                {user ?<div style={{position:"absolute", right:"0", marginRight:"2vw"}}> <NewTaskLabel setShowModal={setShowModal}/></div>: 
+                <Nav.Link href='#/signIn'>
+                    <div className='link'>
+                        <p>Sign in to add Task</p>
+                    </div>
+                </Nav.Link>}
             </Nav>
         </Navbar>
     )
