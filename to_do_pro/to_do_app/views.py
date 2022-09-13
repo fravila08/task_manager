@@ -13,15 +13,21 @@ def index(request):
 
 @api_view(["GET"])
 def get_task(request):
-    current_task= Task.objects.filter(user= request.user, completed = False, date_for_event=date.today()).values()
-    return Response(list(current_task))
+    try:
+        current_task= Task.objects.filter(user= request.user, completed = False, date_for_event=date.today()).values()
+        return Response(list(current_task))
+    except:
+        return Response(False)
 
 
 @api_view(["GET", "POST"])
 def completed_task(request):
     if request.method == "GET":
-        complete_task=Task.objects.filter(user= request.user, completed = True, date_for_event=date.today()).values()
-        return Response(list(complete_task))
+        try:
+            complete_task=Task.objects.filter(user= request.user, completed = True, date_for_event=date.today()).values()
+            return Response(list(complete_task))
+        except:
+            return Response(False)
     if request.method == "POST":
         task_id=request.data["taskId"]
         board= request.data["boardDrop"]
@@ -139,3 +145,13 @@ def curr_user(request):
         return HttpResponse(data)
     else:
         return JsonResponse({'user':None})
+    
+@api_view(["GET"])
+def dummy_data(request):
+    try:
+        incompleteData=DummyTask.objects.filter(completed = False).values()
+        print(list(incompleteData))
+        return Response(list(incompleteData))
+    except Exception as e:
+        print(e)
+        return Response (False)

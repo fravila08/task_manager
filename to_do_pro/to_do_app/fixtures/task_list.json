@@ -1,34 +1,34 @@
 [
     {
-        "model": "to_do_app.task",
+        "model": "to_do_app.DummyTask",
         "pk": 1,
         "fields":{
-            "title":"Find a Job",
+            "title":"Check Out Francisco's Portfolio",
             "completed":"False"
         }
     },
     {
-        "model": "to_do_app.task",
+        "model": "to_do_app.DummyTask",
         "pk": 2,
         "fields":{
-            "title":"Make a Resume",
-            "completed":"True"
-        }
-    },
-    {
-        "model": "to_do_app.task",
-        "pk": 3,
-        "fields":{
-            "title":"Work on personal projects",
+            "title":"Sign Up to see the full functionality of this app",
             "completed":"False"
         }
     },
     {
-        "model": "to_do_app.task",
+        "model": "to_do_app.DummyTask",
+        "pk": 3,
+        "fields":{
+            "title":"Contact Francisco and put a face to the name",
+            "completed":"False"
+        }
+    },
+    {
+        "model": "to_do_app.DummyTask",
         "pk": 4,
         "fields":{
-            "title":"Cry in desperation",
-            "completed":"True"
+            "title":"Enjoy my day!",
+            "completed":"False"
         }
     }
 ]

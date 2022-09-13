@@ -1,4 +1,5 @@
 from datetime import date
+from turtle import title
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -14,6 +15,10 @@ class Task(models.Model):
     title= models.CharField(max_length=250)
     completed= models.BooleanField(default= False, blank= True, null=True)
     user=models.ForeignKey('AppUser', on_delete=models.CASCADE)
+    
+class DummyTask(models.Model):
+    title= models.CharField(max_length=250)
+    completed= models.BooleanField(default= False, blank= True, null=True)
     
 class AppUser(AbstractUser):
     name = models.CharField(max_length=250, null=False, default='unkown')
