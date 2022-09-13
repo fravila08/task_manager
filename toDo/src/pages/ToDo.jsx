@@ -12,7 +12,6 @@ function ToDo({deleteTask}){
 
     const getAllTask=async()=>{
         const response = await axios.get("allIncompleteTask")
-        console.log(response.data)
         setMytask(response.data)
         setShow(!show)
     }
@@ -56,7 +55,7 @@ function ToDo({deleteTask}){
                         </div>: null}
                     </div>
                 )) 
-                :<h2>No Task Avialable</h2>}
+                :<h2>Sign Up or Sign In</h2>}
             </div>
         </div>
     )

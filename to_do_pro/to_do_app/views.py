@@ -57,7 +57,6 @@ def myCompletedTask(request):
 @api_view(["POST"])
 def new_task(request):
     try:
-        print(request.data)
         title=request.data["title"]
         incoming=Task.objects.create(user=request.user, title=title)
         if "time_for_event" in request.data:
@@ -88,7 +87,6 @@ def new_task(request):
             details= request.data["details"]
             incoming.details=details
             incoming.save()
-        print(list(incoming))
         return Response({"msg":"new item was created"})
     except Exception as e:
         print(e)
@@ -150,7 +148,6 @@ def curr_user(request):
 def dummy_data(request):
     try:
         incompleteData=DummyTask.objects.filter(completed = False).values()
-        print(list(incompleteData))
         return Response(list(incompleteData))
     except Exception as e:
         print(e)

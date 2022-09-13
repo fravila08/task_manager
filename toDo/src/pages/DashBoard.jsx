@@ -42,7 +42,6 @@ function DashBoard({deleteTask}){
     const getDummy= async()=>{
         const response= await axios.get("dummydata")
         if(response.data !== false){
-            console.log(response.data)
             setIdummy(response.data)
             setFoundDummy(!foundDummy)
         }
@@ -96,16 +95,13 @@ function DashBoard({deleteTask}){
                         </div>: null}
                     </div>
                 )):
-                <div>
+                <div style={{width:"100%"}}>
                     {foundDummy ? idummy.map((item)=>(
-                    <div className="holder">
+                    <div className="holder" style={{width:"100%"}}>
                     <ShakeLittle className="holder" dur={1500} >
                         <Card id={`card_${item.id }`} className="card" draggable="true">
-                            <div className="insideCard">
+                            <div className="insideCard" style={{justifyContent:'center'}}>
                                 <h5>{item.title}</h5>
-                                <div>
-                                    <EraseDetails deleteTask={deleteTask} myItemId={item.id}/>
-                                </div>
                             </div>
                         </Card>
                     </ShakeLittle></div>)) : null}

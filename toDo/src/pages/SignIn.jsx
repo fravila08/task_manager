@@ -14,13 +14,14 @@ function SignIn(){
         })
     }
     return (
-      <div className='signCont'>
-        <div className='signForm'>
-            <input id='emailSignIn' placeholder='EMAIL'/>
-            <br/>
-            <input id='passwordSignIn' type='password' placeholder='PASSWORD'/>
-            <button onClick={singIn} style={{textDecoration:"underline"}}>Sign In</button>
-        </div>
+      <div className='holdingList'>
+          <form onSubmit={singIn}  className='theListForm'>
+            <label><h3>Email:</h3></label>
+            <input id='emailSignIn' className='textInput' placeholder='EMAIL'/>
+            <label><h3>Password:</h3></label>
+            <input id='passwordSignIn' className='textInput' type='password' placeholder='PASSWORD'/>
+            <input type="submit" className='submitButton'  placeholder="Sign In" />
+          </form>
       </div>
     )
 }

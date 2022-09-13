@@ -138,6 +138,36 @@ p{
   padding: 1vh 0;
 }
 
+.theListForm{
+  width: 50vw;
+  height: 50vh;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 1vw black;
+  border-radius: 5vw;
+}
+.textInput{
+  width: 80%;
+  border: black 3px solid;
+  border-radius: 1vw;
+  padding-left:1vw;
+}
+
+.submitButton{
+  width: 50%;
+  text-decoration: none;
+  margin-top: 2vh;
+  border:black solid 3px;
+  border-radius: 1vw;
+}
+
+.submitButton:hover{
+  background-color: rgb(2, 149, 2);
+}
+
 .theList::-webkit-scrollbar{
   width: 0;
   display: none;
@@ -196,3 +226,53 @@ p{
   border: 2px solid black;
   width: 100%;
 }
+
+@media (max-width:1433px) {
+  .link{
+    background-color: red;
+    text-align: center;
+    height: 15vh;
+  }
+}
+@media (max-width:1088px) {
+  .columnTitle{
+    width: 90%;
+  }
+}
+@media (max-width:786px){
+  .link{
+    width: 14vw;
+  }
+}
+
+@media (max-width:700px){
+  .link{
+    width: 16vw;
+  }
+  .insideCard{
+    flex-direction: column;
+  }
+  .newTaskLabel{
+    position: relative;
+    top:20vh;
+    left: 1vw;
+  }
+}
+
+@media (max-width:650px) {
+  .link{
+    width: fit-content;
+  }
+  .itemRow{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width:560px) {
+  .columnTitle{
+    width: 100%;
+  }
+  
+}
+

@@ -13,7 +13,7 @@ function NewTaskLabel({setShowModal}){
             </Tooltip>
           }
         >
-        <Button variant="outline-success" onClick={()=>setShowModal(true)}>➕</Button>
+        <Button variant="outline-success" className='newTaskLabel' onClick={()=>setShowModal(true)}>➕</Button>
     </OverlayTrigger>
     )
 }

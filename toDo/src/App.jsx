@@ -67,9 +67,9 @@ function App() {
   return (
     <div className="App">
       {user ?
-          <div className='upRight' >
-            <p style={{textDecoration:"none", color:"white"}} >Welcom {user && user.name}</p>
-            <a href="#" onClick={signOut}  style={{textDecoration:"none", color:"white"}} ><strong>Sign Out</strong></a>
+          <div className='upRight' style={{flexDirection:"column"}}>
+            <p style={{textDecoration:"none", color:"black"}} >Welcom {user && user.name}</p>
+            <a href="#" onClick={signOut}  style={{textDecoration:"none", color:"black"}} ><strong>Sign Out</strong></a>
           </div> :
           <div className="upRight" >
             <a href="#/signUp" style={{textDecoration:"none", color:"black"}} ><strong>Sign Up</strong></a>

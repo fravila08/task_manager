@@ -17,19 +17,16 @@ function SignUp(){
         })
       }
       return(
-        <div className='signCont'>
-          <div className='signForm' style={{height:"40vh"}}>
-              <label>First Name</label>
-              <input id='name' placeholder='ex: pacho'/>
-              <br/>
-              <label>Email</label>
-              <input id='email' placeholder='ex: pancho@gmail.com'/>
-              <br/>
-              <label>Password</label>
-              <input id='password' type="password" placeholder='PASSWORD'/>
-              <br/>
-              <button onClick={signUp} style={{textDecoration:"underline"}}>Sign Up</button>
-          </div>
+        <div className='holdingList'>
+          <form className='theListForm' onSubmit={signUp} style={{height:"40vh"}}>
+              <label><h3>First Name</h3></label>
+              <input  className='textInput' id='name' placeholder='ex: pancho'/>
+              <label><h3>Email</h3></label>
+              <input  className='textInput' id='email' placeholder='ex: pancho@gmail.com'/>
+              <label><h3>Password</h3></label>
+              <input  className='textInput' id='password' type="password" placeholder='PASSWORD'/>
+              <input type="submit" className='submitButton'  placeholder="Sign Un" />
+          </form>
         </div>
       )
 }
