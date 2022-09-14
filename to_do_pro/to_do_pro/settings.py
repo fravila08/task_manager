@@ -23,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d-jgl)pkf_me%h0tf#0i11*@j-od8^c(m7u3o_+qdqson2baz!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
-
+CSRF_TRUSTED_ORIGINS=["https://fataskmanager.com"]
 # Application definition
 
 INSTALLED_APPS = [
