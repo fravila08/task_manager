@@ -3,6 +3,8 @@ MY_DB={
 }
 
 def generate_id():
+    if not MY_DB:
+        return 1
     return max(MY_DB.keys())+1
 
 def create_record(a_task):
